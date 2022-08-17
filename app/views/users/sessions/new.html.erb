@@ -1,0 +1,48 @@
+<%= stylesheet_link_tag "signup.css" %>
+<%= render "/navbar" %>
+
+<div class="container box-main">
+<div class="felxing-box">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  
+  <h2 class="sign-text">sign in</h2>
+  <div class="">
+    <%= f.label :email , class:"label-style" %>:
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "inp-field", placeholder:"Enter Your E-mail " %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password , class:"label-style" %>:
+    <%= f.password_field :password, autocomplete: "current-password", class: "inp-field", placeholder:"Enter Your Password "  %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+ 
+  <div class="actions">
+    <%= f.submit "Log in", redirect_to: homepage_about_path,  class:"btn-sign" %>
+  </div>
+<% end %>
+
+<div>
+  <%= image_tag "line-bend.svg", class:"line-bend" %>
+</div>
+
+<div>
+<%= image_tag "market.svg", class:"img-market" %>
+<div class="login-text">
+Don't Have an acocunt? 
+    <%= render "users/shared/links", class:"col-change" %>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<%= render "/footer" %>

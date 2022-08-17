@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+   <%= stylesheet_link_tag 'about-style.css' %>
+    </head>
+    <body>
+    <%= render "/navbar" %>
+    <div class="main-box" >
+        <div class="one">
+            <div class="two">Our Mission</div> <br>   
+            <div class="three">There's this notion that to grow a 
+            business, you have to be ruthless. But we know 
+            there's a better way to grow. One where what's
+             good for the bottom line is also good for customers. 
+             We believe businesses can grow with a conscience, and 
+             succeed with a soul — and that they can do it with inbound. 
+             That's why we've created an ecosystem uniting software to
+             help Idea and Innovation grow better every day.</div>
+        </div>
+        <div>
+            <%= image_tag "set.svg", class:"img-set" %>
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="main-box bb">
+        <div class="one">  
+            <div class="three">“What is the calculus of innovation? <br> 
+            The calculus of innovation is really quite simple: Knowledge
+                 drives innovation, innovation drives productivity, 
+            productivity drives economic growth.“</div>
+        </div>
+        <div>
+            <%= image_tag "about-img.svg", class:"img-set2" %>
+        </div>
+    </div>
+    <div>
+        <%= image_tag "designline.png", class:"design" %>
+    </div>
+    <div class="fill">
+       “Success is making those who believed in you <br> look brilliant.”
+    </div>
+      <div class="line"></div>
+    <%= render "/footer" %>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+.tabstyle{
+    text-decoration: none !important;
+    color: white;
+    margin-right: 15px;
+}
+.tabstyle:hover{
+    background-color: #D9D9D9;
+    color: black;
+border-radius: 15px;
+}
+.tabstyle:active{
+    background-color: #D9D9D9;
+    color: black;
+border-radius: 15px;
+}
+.logo{
+    margin-left: 55px;
+}
+.btn-tu{
+    background: none !important;
+    box-shadow: none;
+    border: none;
+    color: white;
+}
+
+.btn-tu:hover {
+    background-color: #D9D9D9 !important;
+    color: black !important;
+border-radius: 15px;
+}
+.btn-tu:active{
+        background-color: #D9D9D9;
+        color: black;
+    border-radius: 15px;
+}
