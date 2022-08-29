@@ -1,0 +1,51 @@
+<%= render "/nav" %>
+<%= stylesheet_link_tag 'post_new.css' %>
+        <div class="container">
+            <div class="btn-back">
+                <%= image_tag 'back.png' %>
+                    <%= link_to 'Back' , post_index_path , class:"backpost" %>
+            </div>
+            <div class="container" align="center">
+                <%= form_for :profile, url: profile_index_path do |p| %>
+                    <% if @profile.errors.any? %>
+                        <div id="error_explanation">
+                            <h2>
+                                <%= pluralize(@profile.errors.count, "error" ) %> prohibited
+                                    this article from being saved:
+                            </h2>
+                            <ul>
+                                <% @profile.errors.full_messages.each do |msg| %>
+                                    <li>
+                                        <%= msg %>
+                                    </li>
+                                    <% end %>
+                            </ul>
+                        </div>
+                        <% end %>
+                            <div >
+                                <p class="">
+                                    <%= p.file_field :image %>
+                                </p>
+                                <p class="over">
+                                    <div class="round-img"></div>
+                                </p>
+                                <div class="" >
+                                    <p class="">
+                                        Username<br>
+                                        <%= p.text_field :uname ,class: "inp-field-desc" ,
+                                            placeholder: "Add user name" %> <br>
+                                            <%= p.label :description %><br>
+                                        <%= p.text_field :description ,class: "inp-field-desc" ,
+                                            placeholder: "Add Description..." %> <br><br>
+                                            <%= p.submit  %>
+                                                 
+                                    </p>
+                                </div>
+                            </div>
+                            
+
+                            <% end %>
+            </div>
+            
+
+        </div>

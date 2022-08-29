@@ -1,0 +1,27 @@
+<%= render "/nav" %>
+<div align="center">
+  <h1 style="color: white;"><%= pluralize(@user.count, "Results") %></h1>
+<%= render "search/form" %>
+<table>
+    <thead>
+      <tr>
+        <th> <div style="text-decoration: none; color:white; width:80px; height:30px; border-radius:15px; background:white; text-align:center; margin-top:20px; margin-bottom:20px; ">
+          <%= sort_link(@q, :email, 'Sort', default_order: :desc) %>
+        </div> 
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><% @user.each do |user| %>
+            <div class="card" style="font-size:20px; padding:10px; width:400px; margin-bottom:20px;">
+                <%= user.email %>
+                <%= @post %>
+            </div>
+                            <% end %></td>
+                          
+        </tr>
+    </tbody>
+  </table>
+  
+
+</div>

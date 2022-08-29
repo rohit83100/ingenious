@@ -1,0 +1,68 @@
+.round-img{
+    background: #6C686B;
+    height: 148px;
+    width: 156px;
+    border-radius: 100%;
+    margin-top: 50px;
+    margin-left: 80px;
+}
+.baju{
+    margin-left: 80px;
+    margin-top: 50px;
+    flex-wrap: nowrap;
+}
+.edited{
+text-decoration: none !important;
+
+background: #D9D9D9;
+border-radius: 10px;
+}
+.rohit_text{
+    font-family: 'Outfit';
+font-style: normal;
+font-weight: 400;
+font-size: 35px;
+line-height: 50px;
+text-indent: 10px;
+color: #FFFFFF;
+} 
+.btn-colun{
+    width: 111px;
+height: 45px;
+background: #D9D9D9;
+border-radius: 10px;
+margin-left: 40px;
+}
+.a-taging{
+    text-decoration: none !important;
+    color: black !important;
+}
+.baju2{
+    margin-left: 50px;
+    margin-top: 25px;
+}
+.texting-post{
+    margin-left: 30px;
+    font-family: 'Outfit';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 20px;
+text-indent: 10px;
+color: #FFFFFF;
+}
+.desc-text-bio{
+    width: 286px;
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 25px;
+color: #FFFFFF;
+display: block !important;
+margin-left: 316px;
+}
+.line-profile{
+    border: 1px solid #FFFFFF;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

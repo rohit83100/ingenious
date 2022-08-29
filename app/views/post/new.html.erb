@@ -1,0 +1,49 @@
+<%= render "/nav" %>
+    <%= stylesheet_link_tag 'post_new.css' %>
+        <div class="container">
+            <div class="btn-back">
+                <%= image_tag 'back.png' %>
+                    <%= link_to 'Back' , post_index_path , class:"backpost" %>
+            </div>
+            <div class="container" align="center">
+                <%= form_for :post, url: post_index_path do |f| %>
+                    <% if @post.errors.any? %>
+                        <div id="error_explanation">
+                            <h2>
+                                <%= pluralize(@post.errors.count, "error" ) %> prohibited
+                                    this article from being saved:
+                            </h2>
+                            <ul>
+                                <% @post.errors.full_messages.each do |msg| %>
+                                    <li>
+                                        <%= msg %>
+                                    </li>
+                                    <% end %>
+                            </ul>
+                        </div>
+                        <% end %>
+                            <div class="manwomen">
+                                <p class="boxing-file under">
+                                    <%= f.file_field :image ,class:"boxing-file" %>
+                                </p>
+                                <p class=" over">
+                                    <%= image_tag 'drag.png' %> <br>
+                                        Drag photos and videos here
+                                </p>
+                            </div>
+                            <div class="ipopop" >
+                                <p class="inner-back">
+                                    <%= f.text_field :description ,class: "inp-field-desc" ,
+                                        placeholder: "Add Description..." %>
+
+                                        <%= button_tag type: 'f.submit' , class: "button-sub " do %>
+                                            <%= image_tag 'plane.png' %>
+                                                <% end %>
+                                </p>
+                            </div>
+
+                            <% end %>
+            </div>
+            
+
+        </div>

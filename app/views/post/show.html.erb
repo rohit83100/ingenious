@@ -1,0 +1,73 @@
+<%= render "/nav" %>
+<div class="container center my-5" align="center"  style="display:flex; margin-right: 0px; margin-left:250px">
+    <div align="center " class="my-5" >
+        <div class="card" style="width: 28rem; margin-bottom: 1rem; text-align: left !important;">
+            <div>
+                <div><img src="" alt="">  <span><%= @post.user.email %> </span> 
+                    <span style="float: right;">
+                        <div class="dropdown">
+                            <a class="" id="dropdownMenuButton1" data-bs-toggle="dropdown" >
+                                <%= image_tag "ellipsis.png" %>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <% if @post.user_id = current_user  %>
+                                <li><%= button_to "Delete", post_path(@post) , method: :delete, class:"dropdown-item"  %></li>
+                                <li><%= link_to 'Edit', edit_post_path(@post), class:"dropdown-item"  %></li>
+                                  <% end %>
+                                <li> <%= link_to 'go to post', post_path(@post),class:"dropdown-item"  %></li>
+                            </ul>
+                          </div>
+                       </span>
+                </div>
+                <%= image_tag @post.image.representation(resize_to_limit: [446, 446]) if @post.image.attached? %>
+            </div>
+            
+            <div class="card-body" >
+                <div style="display: flex;">
+                    <% like = current_user.likes.find_by(post: @post) %>
+                    <% if like.nil? %> 
+                    <%= button_to  (image_tag "heart.png"), likes_path, params: {like: { post_id: @post.id }}, method: :post ,class:"btn-like"   %>
+                    <% else %>
+                    <%= button_to (image_tag "heartfull.png", width:32 , height:32 ), like_path(like), method: :delete, class:"btn-like" %>
+                    <% end %>
+                <%= link_to ( image_tag "text.png"), post_path(@post)  %>
+                <%= image_tag "plane.png"  %>
+                </div>
+                
+            <p><%= @post.likes.count %> Likes</p>
+                <p class="card-text"><%= @post.description %></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container " style="width: 300px; margin-left:60px;background: #D9D9D9;
+    border-radius: 15px; margin-right:50px; margin-top:54px; ">
+    <div style="text-align: left  !important;">
+        <div> 
+            <h2>Comments</h2>
+            <% @post.comments.each do |comment| %>
+              <p>
+                <p>
+                    <%= comment.user.email %>
+                </p>
+                <strong>Comment:</strong>
+                <%= comment.body %>
+              </p>
+            <% end %>
+            
+            <%= render "form" %>
+            
+          
+        </div></div>
+    </div>
+   
+    </div>
+    
+    </div>
+    <div>
+       
+</div>
+
+
+
+
