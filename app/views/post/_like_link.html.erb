@@ -1,0 +1,19 @@
+<%= link_to like_post_path(post), method: :patch, remote: true, id: "like-link-#{post.id}" do %>
+  <% if current_user.voted_up_on?(post) %>
+    <b>
+      <%= post.cached_votes_score %>
+    </b>
+    DOWN vote
+  <% elsif current_user.voted_down_on?(post) %>
+    UP vote
+    <b>
+      <%= post.cached_votes_score %>
+    </b>
+  <% else %>
+    UP
+    <b>
+      <%= post.cached_votes_score %>
+    </b>
+    DOWN
+  <% end %>
+<% end %>

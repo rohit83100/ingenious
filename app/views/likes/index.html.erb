@@ -1,8 +1,5 @@
 <%= render "/nav" %>
-<div class="box-like-white" align="center" style="margin-top:50px; margin-right:180px; margin-left:180px; margin-bottom:20px; background:#ffff; padding-top:20px; padding-bottom:20px;  border-radius:20px;">
-    <%  Array(@like).each do |like| %>
-    <div class="like-email" style="background-color: #888888; border-bottom:1px solid black; height:60px; margin-left:80px; margin-right:80px; border-radius:20px; margin-top:15px; margin-bottom:20px;">
-        <%= like.user.email %> Liked your post  <br>
-    </div>
-    <% end %>
-</div>
+<%= render "post/like" %>
+<%= @posts.each do |post| %>
+<%= @posts %>
+<% end %>

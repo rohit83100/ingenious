@@ -2,6 +2,7 @@ class Post < ApplicationRecord
     validates :description, presence: true,
     length: { minimum: 5 }
     belongs_to :user
+    acts_as_votable
     has_many :comments
     has_many :likes
     has_many :profiles

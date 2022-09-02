@@ -74,3 +74,4 @@ end
 
 gem 'ransack'
 gem 'faker'
+gem 'acts_as_votable'

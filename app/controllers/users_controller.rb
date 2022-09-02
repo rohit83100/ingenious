@@ -15,7 +15,13 @@ class UsersController < ApplicationController
 
     private
     def get_name(user1, user2)
-        user = [user1, user2].sort
-       (user1.id) || (user2.id)
+        if user1.id < user2.id 
+            return "#{user1.id}-#{user2.id}"
+        else 
+            return "#{user2.id}-#{user1.id}"
+        end           
+        # user = [user1, user2].sort
+    #    (user1.id) || (user2.id)
+    #    "private_#(user1.id_#user2.id)"
     end    
 end

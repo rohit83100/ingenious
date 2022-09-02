@@ -1,6 +1,1 @@
-<% like = current_user.likes.find_by(post: @post) %>
-<% if like.nil? %> 
-<%= button_to  (image_tag "heart.png"), likes_path, method: :post ,class:"btn-like"   %>
-<% else %>
-<%= button_to (image_tag "heartfull.png", width:32 , height:32 ), like_path(like), method: :delete, class:"btn-like" %>
-<% end %>
+<%= @post.get_upvotes(vote_scope: 'rank').size %>

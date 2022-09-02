@@ -4,6 +4,8 @@ class RoomsController < ApplicationController
      @room = Room.new
      @rooms = Room.public_rooms
      @user = User.all_except(current_user)
+     @prof = Profile.where(user_id: current_user.id).first
+     @profile = Profile.where(user_id: current_user.id).first
   end
 
   def show

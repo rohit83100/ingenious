@@ -3,11 +3,9 @@
 one:
   uname: MyString
   description: MyText
-  post: one
   user: one
 
 two:
   uname: MyString
   description: MyText
-  post: two
   user: two

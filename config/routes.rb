@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   end
   get 'search', to: 'search#index' 
   resources :post do
+    member do
+      patch "upvote", to: "post#upvote"
+      patch "downvote", to: "post#downvote"
+    end
     resources :comments
   end
   resources :likes, only: [:create, :destroy, :index]

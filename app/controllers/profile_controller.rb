@@ -6,19 +6,22 @@ class ProfileController < ApplicationController
      @user = User.find(current_user[:id])
     end   
     def show
-      @prof = Post.where(user_id:current_user) 
+      @profi = Post.where(user_id:current_user) 
       @profile = Profile.find(params[:id])
+      @prof = Profile.where(user_id: current_user.id).first
     end 
     def new
         @profile = Profile.new
+        @prof = Profile.where(user_id: current_user.id).first
     end
     def edit
         @profile = Profile.find(params[:id])
+        @prof = Profile.where(user_id: current_user.id).first
     end
     def create
-      @profile = Profile.new(profile_params)
+      @profile = Profile.create({user_id: current_user.id}.merge(profile_params))
       @profile.user_id = current_user.id
-      @profile = Post.where(user_id:current_user.id) 
+      # @post = Post.where(user_id:current_user.id) 
         if @profile.save
           redirect_to @profile
         else

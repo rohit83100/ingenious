@@ -1,11 +1,22 @@
+<style>
+    .tip-height{
+        height: 450px;
+    }
+</style>
 <%= render "/nav" %>
 <div style="display: flex;">
         <div class="container center my-5" align="right" style="margin-right: 30px; margin-left:-300px" >
             <% @post.each do |post| %>
             <div class="card" style="width: 28rem; margin-bottom: 1rem; text-align: left !important;">
                 <div>
-                    <div><img src="" alt="">  <span><%= post.user.email %> </span> 
-                        <span style="float: right;">
+                    
+                    <div style="display: flex;">
+                        <div style="width: 50px; height:50px; border-radius:100%; background:#D9D9D9; margin-top:8px; margin-left:7px; margin-bottom:8px; display:flex;">
+                            <%= image_tag @profile.image.representation(resize_to_limit: [100, 100]), style:"width: 50px; height:50px; border-radius:100%;" if @profile.image.attached? %>
+                        </div>
+                 
+                        <span style="margin-top:15px; margin-left:15px;" ><%= post.user.email %> </span> 
+                        <span style="margin-left:100px; margin-top:15px;">
                             <div class="dropdown">
                                 <a class="" id="dropdownMenuButton1" data-bs-toggle="dropdown" >
                                     <%= image_tag "ellipsis.png" %>
@@ -18,24 +29,34 @@
                                   <li> <%= link_to 'go to post', post_path(post),class:"dropdown-item"  %></li>
                                 </ul>
                               </div>
-                           </span>
+                        </span>
                 
                     </div>
                 </div>
+                <div class="card-img-top">
+                    <%= image_tag post.image.representation(resize_to_limit: [80, 80]), class:"card-img-top tip-height" if post.image.attached? %>
+                </div>
                 
-                <%= image_tag post.image.representation(resize_to_limit: [100, 100]), class:"card-img-top" if post.image.attached? %>
-                <div class="card-body" >
-                    <% like = current_user.likes.find_by(post: @post) %>
-                    <% if like.nil? %> 
-                    <%= button_to  (image_tag "heart.png"), likes_path, params: {like: { post_id: @post}}, method: :post ,class:"btn-like"   %>
-                    <% else %>
-                    <%= button_to (image_tag "heartfull.png", width:32 , height:32 ), like_path(like), method: :delete, class:"btn-like" %>
-                    <% end %>
-                <%= link_to ( image_tag "text.png"), post_path(post)  %>
-                <%= image_tag "plane.png"  %>
-                <p>158,589 views</p>
+                <div class="card-body" style="display: flex;">
+                    <% if current_user %>
+    <br>
+    <%= render 'post/upvote_link', post: post , style:"border:none !important;" %>
+   
+  <% end %>
+                        
+                    
+                    
+                    <%= link_to ( image_tag "text.png"), post_path(post)  %>
+                </div>
+                <div class="card-body">
+                    <div style="display: flex !important; margin-top:-30px;">
+                        <p> <%= render 'post/like_count', post: post %></p>
+                        <p style="display: flex !important;"> Likes</p>
+                    </div>
+                    
                     <p class="card-text"><%= post.description %></p>
                 </div>
+                
             </div>
             <% end %>
         </div>

@@ -27,7 +27,7 @@
                                     <%= p.file_field :image %>
                                 </p>
                                 <p class="over">
-                                    <div class="round-img"></div>
+                                    <div class="round-img"><%= image_tag @profile.image.preview(resize_to_limit: [100, 100]) %></div>
                                 </p>
                                 <div class="" >
                                     <p class="">

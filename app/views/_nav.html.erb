@@ -23,17 +23,17 @@
   <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes">
    <%= link_to (image_tag "heart.png", height: 20,  width: 23), likes_path , class:"nav-link tabstyle1" %>
   </li>
-        <%  Array(@profile).each do |profile| %>
-            <% if current_user.id == profile.user_id %>
+        
+            <% if @prof.present? %>
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profile">
-            <%= link_to (image_tag "acc.png", height: 20,  width: 23), profile_path(profile), class:"nav-link tabstyle1" %>
+            <%= link_to (image_tag "acc.png", height: 20,  width: 23), profile_path(@profile), class:"nav-link tabstyle1" %>
             </li>
             <% else %>
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profile">
               <%= link_to (image_tag "acc.png", height: 20,  width: 23), new_profile_path , class:"nav-link tabstyle1" %>
             </li>
             <% end %>
-        <% end %>     
+     
     <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">
                 <% if current_user %>
                 <%= button_to(

@@ -1,21 +1,62 @@
 class PostController < ApplicationController
     before_action :authenticate_user!
     def index
-        @post = Post.all()
+        @post = Post.all().order(created_at: :desc)
         @user = User.all()
-        @profile = Profile.all()
-      @profile = Profile.where(user_id: current_user.id)
-        # @profile = Profile.find(params[:id])
-        @prof = Post.where(user_id:current_user.id) 
-    end   
+        @profile = Profile.where(user_id: current_user.id).first
+        @prop = Profile.new
+        @prof = Profile.where(user_id: current_user.id).first
+        # @@posts = Post.all.liked_by current_userprofile = Profile.find(params[:id])
+        if !@prop.present?
+          redirect_to @prop
+    end
+  end
+
+
+    def upvote
+      @post = Post.find(params[:id])
+     @prop = current_user.get_up_voted(Post)
+      respond_to do |format|
+      if current_user.voted_up_on? @post
+        @post.unvote_by current_user
+      else
+        @post.upvote_by current_user
+      end
+      
+        format.js { render :file => "C:/Users/Lenovo/Desktop/bay/ingenious_bay/app/views/post/vote.js.erb" }
+        format.html 
+      end
+    end
+  
+    def downvote
+      @post = Post.find(params[:id])
+      respond_to do |format|
+      if current_user.voted_down_on? @post
+        @post.unvote_by current_user
+      else
+        @post.downvote_by current_user
+      end
+      format.js { render :file => "C:/Users/Lenovo/Desktop/bay/ingenious_bay/app/views/post/vote.js.erb" }
+        format.html 
+    end
+  end
+  
+
     def show
         @post = Post.find(params[:id])
+        @profile = Profile.all()
+        @profile = Profile.where(user_id: current_user.id).first
+        @prof = Profile.where(user_id: current_user.id).first
     end 
     def new
         @post = Post.new
+        @prof = Profile.where(user_id: current_user.id).first
+        @profile = Profile.where(user_id: current_user.id).first
     end    
     def edit
         @post = Post.find(params[:id])
+        @prof = Profile.where(user_id: current_user.id).first
+        @profile = Profile.where(user_id: current_user.id).first
     end
     def create
        
@@ -49,4 +90,4 @@ class PostController < ApplicationController
     def post_params
         params.require(:post).permit(:description , :image, :like)
     end 
-end
+  end

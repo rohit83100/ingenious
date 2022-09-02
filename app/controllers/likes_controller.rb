@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
 def index
-    @like = Like.all()
+   
 end
 def create 
     @like = current_user.likes.new(like_params)

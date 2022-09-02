@@ -17,7 +17,7 @@
                 </p>
             </div>
             <div class="baju2">
-                <span class="texting-post"><%= @prof.length %> Posts</span>
+                <span class="texting-post"><%= @profi.length %> Posts</span>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
     <div class="line-profile">
     </div>
     <div style="display: flex;">
-        <% @prof.each do |prof| %>
+        <% @profi.each do |prof| %>
         <div class="card"style="width: 25rem; margin:10px; background:white !important; display:flex; height:26rem; border-radius:20px; margin-bottom: 1rem; ">
             <%= link_to @profile.user.email, post_path(prof)  %>
             <div class="card" >
