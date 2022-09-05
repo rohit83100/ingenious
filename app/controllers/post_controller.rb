@@ -3,15 +3,16 @@ class PostController < ApplicationController
     def index
         @post = Post.all().order(created_at: :desc)
         @user = User.all()
+        @profile = Profile.all()
         @profile = Profile.where(user_id: current_user.id).first
-        @prop = Profile.new
         @prof = Profile.where(user_id: current_user.id).first
-        # @@posts = Post.all.liked_by current_userprofile = Profile.find(params[:id])
-        if !@prop.present?
-          redirect_to @prop
-    end
+       
   end
-
+  def profile_image
+    if current_user
+    Profile.where(post_id: Post.ids)
+    end
+  end  
 
     def upvote
       @post = Post.find(params[:id])

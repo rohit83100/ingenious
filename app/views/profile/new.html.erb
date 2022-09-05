@@ -1,5 +1,5 @@
 <%= render "/nav" %>
-<%= stylesheet_link_tag 'post_new.css' %>
+    <%= stylesheet_link_tag 'post_new.css' %>
         <div class="container">
             <div class="btn-back">
                 <%= image_tag 'back.png' %>
@@ -22,30 +22,30 @@
                             </ul>
                         </div>
                         <% end %>
-                            <div >
+                            <div>
                                 <p class="">
                                     <%= p.file_field :image %>
                                 </p>
                                 <p class="over">
-                                    <div class="round-img"><%= image_tag @profile.image.preview(resize_to_limit: [100, 100]) %></div>
+                                <div class="round-img"></div>
                                 </p>
-                                <div class="" >
+                                <div class="">
                                     <p class="">
                                         Username<br>
-                                        <%= p.text_field :uname ,class: "inp-field-desc" ,
-                                            placeholder: "Add user name" %> <br>
+                                        <%= p.text_field :uname ,class: "inp-field-desc" , placeholder: "Add user name"
+                                            %> <br>
                                             <%= p.label :description %><br>
-                                        <%= p.text_field :description ,class: "inp-field-desc" ,
-                                            placeholder: "Add Description..." %> <br><br>
-                                            <%= p.submit  %>
-                                                 
+                                                <%= p.text_field :description ,class: "inp-field-desc" ,
+                                                    placeholder: "Add Description..." %> <br><br>
+                                                    <%= p.submit %>
+
                                     </p>
                                 </div>
                             </div>
-                            
+
 
                             <% end %>
             </div>
-            
+
 
         </div>

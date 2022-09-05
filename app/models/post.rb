@@ -5,7 +5,7 @@ class Post < ApplicationRecord
     acts_as_votable
     has_many :comments
     has_many :likes
-    has_many :profiles
+    has_one :profiles
     has_one_attached :image do |attachable|
         attachable.variant :thumb, resize_to_limit: [150, 150]
     end

@@ -1,46 +1,45 @@
 <%= stylesheet_link_tag 'nav1.css' %>
-<nav class="navbar navbar-light line-under ">
+  <nav class="navbar navbar-light line-under ">
     <a class="navbar-brand logo" href="#">
-    <%= image_tag "logo.svg", height: 74,  width: 70 %>
+      <%= image_tag "logo.svg" , height: 74, width: 70 %>
     </a>
     <button class="btn" style="width: 200px; height:40px; background:#FEF8E8; ">
-<%= link_to "Search...", search_path, style:"text-decoration:none !important; color:black;"  %>
+      <%= link_to "Search..." , search_path, style:"text-decoration:none !important; color:black;" %>
     </button>
     <!-- <form class="d-flex">
         <input class="form-control me-2 " type="search" placeholder="Search"  aria-label="Search">
       </form> -->
-<ul class="nav justify-content-end me-5">
-  <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home">
-  <%= link_to (image_tag "home.png", height: 18,  width: 25 ), post_index_path , class:"nav-link tabstyle1" %>
-  </li>
-   
-  <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Message">
-    <%= link_to (image_tag "message.png", height: 20,  width: 25), rooms_path , class:"nav-link tabstyle1" %>
-  </li>
-  <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Create Post">
-  <%= link_to (image_tag "create.png", height: 18,  width: 23), new_post_path , class:"nav-link tabstyle1" %>
-  </li>
-  <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes">
-   <%= link_to (image_tag "heart.png", height: 20,  width: 23), likes_path , class:"nav-link tabstyle1" %>
-  </li>
-        
-            <% if @prof.present? %>
-            <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profile">
-            <%= link_to (image_tag "acc.png", height: 20,  width: 23), profile_path(@profile), class:"nav-link tabstyle1" %>
-            </li>
-            <% else %>
-            <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profile">
-              <%= link_to (image_tag "acc.png", height: 20,  width: 23), new_profile_path , class:"nav-link tabstyle1" %>
-            </li>
-            <% end %>
-     
-    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">
-                <% if current_user %>
-                <%= button_to(
-            (image_tag "out.png", height: 18,  width: 23),destroy_user_session_path,method: :delete, class:"nav-link tabstyle1 btn-tu") %>
-            <% end %>
-  </li>
-  
+    <ul class="nav justify-content-end me-5">
+      <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home">
+        <%= link_to (image_tag "home.png" , height: 18, width: 25 ), post_index_path , class:"nav-link tabstyle1" %>
+      </li>
 
-</ul>
-</nav>
+      <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Message">
+        <%= link_to (image_tag "message.png" , height: 20, width: 25), rooms_path , class:"nav-link tabstyle1" %>
+      </li>
+      <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Create Post">
+        <%= link_to (image_tag "create.png" , height: 18, width: 23), new_post_path , class:"nav-link tabstyle1" %>
+      </li>
+
+
+      <% if @prof.present? %>
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profile">
+          <%= link_to (image_tag "acc.png" , height: 20, width: 23), profile_path(@profile), class:"nav-link tabstyle1"
+            %>
+        </li>
+        <% else %>
+          <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profile">
+            <%= link_to (image_tag "acc.png" , height: 20, width: 23), new_profile_path , class:"nav-link tabstyle1" %>
+          </li>
+          <% end %>
+
+            <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">
+              <% if current_user %>
+                <%= button_to( (image_tag "out.png" , height: 18, width: 23),destroy_user_session_path,method: :delete,
+                  class:"nav-link tabstyle1 btn-tu") %>
+                  <% end %>
+            </li>
+
+
+    </ul>
+  </nav>

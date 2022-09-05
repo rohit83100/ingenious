@@ -1,31 +1,26 @@
- <%= stylesheet_link_tag 'nav.css' %>
-<nav class="navbar navbar-light ">
+<%= stylesheet_link_tag 'nav.css' %>
+  <nav class="navbar navbar-light ">
     <a class="navbar-brand logo" href="#">
-    <%= image_tag "logo.svg", height: 74,  width: 70 %>
+      <%= image_tag "logo.svg" , height: 74, width: 70 %>
     </a>
-<ul class="nav justify-content-end me-5">
-  <li class="nav-item">
-  <%= link_to "Home", homepage_index_path , class:"nav-link tabstyle" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "About", homepage_about_path , class:"nav-link tabstyle" %>
-  </li>
-  <li class="nav-item">
-  <%= link_to "Login", new_user_session_path , class:"nav-link tabstyle" %>
-  </li>
-  <li class="nav-item">
-   <%= link_to "Signup", new_user_registration_path , class:"nav-link tabstyle" %>
-  </li>
-    <li class="nav-item">
-    <% if current_user %>
-    <%= button_to(
-  "Log Out",
-  destroy_user_session_path,
-  method: :delete, class:"nav-link tabstyle btn-tu"
-  
-) %>
-<% end %>
-  </li>
-  
-</ul>
-</nav>
+    <ul class="nav justify-content-end me-5">
+      <li class="nav-item">
+        <%= link_to "Home" , homepage_index_path , class:"nav-link tabstyle" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "About" , homepage_about_path , class:"nav-link tabstyle" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Login" , new_user_session_path , class:"nav-link tabstyle" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Signup" , new_user_registration_path , class:"nav-link tabstyle" %>
+      </li>
+      <li class="nav-item">
+        <% if current_user %>
+          <%= button_to( "Log Out" , destroy_user_session_path, method: :delete, class:"nav-link tabstyle btn-tu" ) %>
+            <% end %>
+      </li>
+
+    </ul>
+  </nav>

@@ -1,82 +1,91 @@
 <%= render "/nav" %>
-<div class="container center my-5" align="center"  style="display:flex; margin-right: 0px; margin-left:250px">
-    <div align="center " class="my-5" >
-        <% Array(@post).each do |post| %> 
-        <div class="card" style="width: 28rem; margin-bottom: 1rem; text-align: left !important;">
-            <div>
-                <div style="display: flex;">
-                    <div style="width: 50px; height:50px; border-radius:100%; background:#D9D9D9; margin-top:8px; margin-left:7px; margin-bottom:8px; display:flex;">
-                        <%= image_tag @profile.image.representation(resize_to_limit: [100, 100]), style:"width: 50px; height:50px; border-radius:100%;" if @profile.image.attached? %>
+    <div class="container center my-5" align="center" style="display:flex; margin-right: 0px; margin-left:250px">
+        <div align="center " class="my-5">
+            <% Array(@post).each do |post| %>
+                <div class="card" style="width: 28rem; margin-bottom: 1rem; text-align: left !important;">
+                    <div>
+                        <div style="display: flex;">
+
+                            <span style="margin-top:15px; margin-left:15px;">
+                                <%= post.user.email %>
+                            </span>
+                            <span style="margin-left:100px; margin-top:15px;">
+                                <div class="dropdown">
+                                    <a class="" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                                        <%= image_tag "ellipsis.png" %>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <% if post.user_id==current_user.id %>
+                                            <li>
+                                                <%= button_to "Delete" , post_path(post) , method: :delete,
+                                                    class:"dropdown-item" %>
+                                            </li>
+                                            <li>
+                                                <%= link_to 'Edit' , edit_post_path(post), class:"dropdown-item" %>
+                                            </li>
+                                            <% end %>
+                                                <li>
+                                                    <%= link_to 'go to post' , post_path(post),class:"dropdown-item" %>
+                                                </li>
+                                    </ul>
+                                </div>
+                            </span>
+
+                        </div>
                     </div>
-                    <span style="margin-top:15px; margin-left:15px;" ><%= post.user.email %> </span> 
-                    <span style="margin-left:100px; margin-top:15px;">
-                        <div class="dropdown">
-                            <a class="" id="dropdownMenuButton1" data-bs-toggle="dropdown" >
-                                <%= image_tag "ellipsis.png" %>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <% if post.user_id == current_user.id  %>
-                              <li><%= button_to "Delete", post_path(post) , method: :delete, class:"dropdown-item"  %></li>
-                              <li><%= link_to 'Edit', edit_post_path(post), class:"dropdown-item"  %></li>
-                              <% end %>
-                              <li> <%= link_to 'go to post', post_path(post),class:"dropdown-item"  %></li>
-                            </ul>
-                          </div>
-                    </span>
-            
+                    <div class="card-img-top">
+                        <%= image_tag post.image.representation(resize_to_limit: [80, 80]), class:"card-img-top
+                            tip-height" if post.image.attached? %>
+                    </div>
+
+                    <div class="card-body" style="display: flex;">
+                        <% if current_user %>
+                            <br>
+                            <%= render 'post/upvote_link' , post: post , style:"border:none !important;" %>
+
+                                <% end %>
+                    </div>
+                    <div class="card-body">
+                        <div style="display: flex !important; margin-top:-30px;">
+                            <p>
+                                <%= render 'post/like_count' , post: post %>
+                            </p>
+                            <p style="display: flex !important;"> Likes</p>
+                        </div>
+                        <p class="card-text">
+                            <%= post.description %>
+                        </p>
+                    </div>
+
                 </div>
-            </div>
-            <div class="card-img-top">
-                <%= image_tag post.image.representation(resize_to_limit: [80, 80]), class:"card-img-top tip-height" if post.image.attached? %>
-            </div>
-            
-            <div class="card-body" style="display: flex;">
-                <% if current_user %>
-                <br>
-                <%= render 'post/upvote_link', post: post , style:"border:none !important;" %>
-               
-              <% end %>
-            </div>
-            <div class="card-body">
-                <div style="display: flex !important; margin-top:-30px;">
-                    <p> <%= render 'post/like_count', post: post %></p>
-                    <p style="display: flex !important;"> Likes</p>
-                </div>
-                <p class="card-text"><%= post.description %></p>
-            </div>
-            
+                <% end %>
         </div>
-        <% end %>
-    </div>
-    
-    <div class="container " style="width: 300px; margin-left:60px;background: #D9D9D9;
+
+        <div class="container " style="width: 300px; margin-left:60px;background: #D9D9D9;
     border-radius: 15px; margin-right:50px; margin-top:54px; ">
-    <div style="text-align: left  !important;">
-        <div> 
-            <h2>Comments</h2>
-            <% @post.comments.each do |comment| %>
-              <p>
-                <p>
-                    <%= comment.user.email %>
-                </p>
-                <strong>Comment:</strong>
-                <%= comment.body %>
-              </p>
-            <% end %>
-            
-            <%= render "form" %>
-            
-          
-        </div></div>
+            <div style="text-align: left  !important;">
+                <div>
+                    <h2>Comments</h2>
+                    <% @post.comments.each do |comment| %>
+                        <p>
+                        <p>
+                            <%= comment.user.email %>
+                        </p>
+                        <strong>Comment:</strong>
+                        <%= comment.body %>
+                            </p>
+                            <% end %>
+
+                                <%= render "form" %>
+
+
+                </div>
+            </div>
+        </div>
+
     </div>
-   
-    </div>
-    
+
     </div>
     <div>
-       
-</div>
 
-
-
-
+    </div>

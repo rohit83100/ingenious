@@ -19,14 +19,15 @@ class ProfileController < ApplicationController
         @prof = Profile.where(user_id: current_user.id).first
     end
     def create
+      
+      @profile = Post.where(user_id:current_user.id) 
       @profile = Profile.create({user_id: current_user.id}.merge(profile_params))
-      @profile.user_id = current_user.id
-      # @post = Post.where(user_id:current_user.id) 
         if @profile.save
           redirect_to @profile
         else
           render 'new'
          end
+      
     end   
     def update
         @profile = Profile.find(params[:id])
